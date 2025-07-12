@@ -1,0 +1,49 @@
+
+.drag-overlay-card {
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    background: #ffffff;
+    box-shadow: var(--shadow-heavy);
+    transform: rotate(3deg);
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 1000;
+  
+    .ant-card-body {
+      padding: 8px 12px;
+    }
+  }
+  
+  .drag-overlay-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+    .drag-overlay-icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+  
+    .drag-overlay-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--primary-color);
+      white-space: nowrap;
+    }
+  }
+  
+  // Animation for smooth drag overlay
+  @keyframes dragOverlayAppear {
+    0% {
+      opacity: 0;
+      transform: scale(0.8) rotate(0deg);
+    }
+    100% {
+      opacity: 0.9;
+      transform: scale(1) rotate(3deg);
+    }
+  }
+  
+  .drag-overlay-card {
+    animation: dragOverlayAppear 0.2s ease-out;
+  }

@@ -1,0 +1,526 @@
+// Group.scss - Group Component Styles
+.group-wrapper {
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+
+  &--drop-target {
+    .group-card {
+      border: 2px solid var(--primary-color);
+      background: #f0f9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+
+    .drop-zone {
+      border-color: var(--primary-color);
+      background: #e6f7ff;
+      border-style: solid;
+
+      &__content {
+        .drop-zone__icon {
+          color: var(--primary-color);
+        }
+
+        .drop-zone__text {
+          color: var(--primary-color);
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  .group-card {
+    border: 1px solid #e8f4f8;
+    border-radius: 8px;
+    background: #f8fffe;
+    box-shadow: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #b3e0ff;
+      box-shadow: var(--shadow-light);
+    }
+
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #e8f4f8;
+    border-bottom: 1px solid #d6f0f7;
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drag-handle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      color: var(--text-secondary);
+      cursor: grab;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--text-primary);
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    .group-title-container {
+      flex: 1;
+
+      .group-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        cursor: pointer;
+        padding: 2px 6px;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .group-title-input {
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        box-shadow: 0 0 0 2px var(--primary-color);
+        border-radius: 3px;
+      }
+    }
+
+    .required-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .required-label {
+        font-size: 11px;
+        color: var(--text-secondary);
+        font-weight: 500;
+      }
+    }
+  }
+
+  .group-content {
+    padding: 16px;
+    min-height: 60px;
+  }
+
+  .drop-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    border: 2px dashed #b3e0ff;
+    border-radius: 6px;
+    background: rgba(240, 249, 255, 0.5);
+    transition: all 0.2s ease;
+    margin-bottom: 8px;
+
+    &:hover {
+      border-color: var(--primary-color);
+      background: #f0f9ff;
+    }
+
+    &--additional {
+      min-height: 60px;
+      margin-top: 12px;
+      margin-bottom: 0;
+      border-style: dotted;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &--active {
+      border-color: var(--primary-color);
+      background: #e6f7ff;
+      border-style: solid;
+      animation: dropZonePulse 1s ease-in-out infinite;
+
+      .drop-zone__icon {
+        color: var(--primary-color);
+        animation: iconBounce 0.6s ease-in-out infinite;
+      }
+
+      .drop-zone__text {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+    }
+
+    &__content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+
+      .drop-zone__icon {
+        font-size: 24px;
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+      }
+
+      .drop-zone__text {
+        color: var(--text-secondary);
+        font-size: 13px;
+        margin: 0;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+
+  .fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+}
+
+// Animations for enhanced drop feedback
+@keyframes dropZonePulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(24, 144, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(24, 144, 255, 0);
+  }
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+// Drag and Drop Enhanced States
+.group-wrapper {
+  &.is-dragging {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  &.is-over-group {
+    .group-card {
+      border-color: var(--success-color);
+      background: #f6ffed;
+      box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .group-wrapper {
+    .group-header {
+      padding: 10px 12px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+
+      &__left {
+        justify-content: space-between;
+      }
+
+      &__right {
+        justify-content: center;
+        gap: 6px;
+
+        .ant-btn {
+          flex: 1;
+        }
+      }
+
+      .group-title {
+        font-size: 13px;
+      }
+
+      .required-toggle {
+        .required-label {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .group-content {
+      padding: 12px;
+    }
+
+    .drop-zone {
+      min-height: 60px;
+
+      &__content {
+        gap: 6px;
+
+        .drop-zone__icon {
+          font-size: 20px;
+        }
+
+        .drop-zone__text {
+          font-size: 12px;
+        }
+      }
+
+      &--additional {
+        min-height: 50px;
+      }
+    }
+  }
+}// Group.scss - Group Component Styles
+.group-wrapper {
+  margin-bottom: 16px;
+  transition: all 0.2s ease;
+
+  &--drop-target {
+    .group-card {
+      border: 2px solid var(--primary-color);
+      background: #f0f9ff;
+      box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+    }
+  }
+
+  .group-card {
+    border: 1px solid #e8f4f8;
+    border-radius: 8px;
+    background: #f8fffe;
+    box-shadow: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: #b3e0ff;
+      box-shadow: var(--shadow-light);
+    }
+
+    .ant-card-body {
+      padding: 0;
+    }
+  }
+
+  .group-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #e8f4f8;
+    border-bottom: 1px solid #d6f0f7;
+
+    &__left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+
+    &__right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .drag-handle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      color: var(--text-secondary);
+      cursor: grab;
+      border-radius: 3px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.5);
+        color: var(--text-primary);
+      }
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    .group-title-container {
+      flex: 1;
+
+      .group-title {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--text-primary);
+        cursor: pointer;
+        padding: 2px 6px;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .group-title-input {
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        box-shadow: 0 0 0 2px var(--primary-color);
+        border-radius: 3px;
+      }
+    }
+
+    .required-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+
+      .required-label {
+        font-size: 11px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .group-content {
+    padding: 16px;
+    min-height: 60px;
+  }
+
+  .drop-zone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    border: 2px dashed #b3e0ff;
+    border-radius: 6px;
+    background: rgba(240, 249, 255, 0.5);
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: var(--primary-color);
+      background: #f0f9ff;
+    }
+
+    &__content {
+      text-align: center;
+
+      p {
+        color: var(--text-secondary);
+        font-size: 13px;
+        margin: 0;
+      }
+    }
+  }
+
+  .fields-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+// Drag and Drop Enhanced States
+.group-wrapper {
+  &.is-dragging {
+    opacity: 0.6;
+    transform: scale(0.98);
+  }
+
+  &.is-over-group {
+    .group-card {
+      border-color: var(--success-color);
+      background: #f6ffed;
+      box-shadow: 0 0 0 2px rgba(82, 196, 26, 0.2);
+    }
+  }
+}
+
+// Enhanced Drop Zone States
+.drop-zone {
+  &.drag-over {
+    border-color: var(--primary-color);
+    background: #e6f7ff;
+    border-style: solid;
+    
+    &__content p {
+      color: var(--primary-color);
+      font-weight: 500;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .group-wrapper {
+    .group-header {
+      padding: 10px 12px;
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+
+      &__left {
+        justify-content: space-between;
+      }
+
+      &__right {
+        justify-content: center;
+        gap: 6px;
+
+        .ant-btn {
+          flex: 1;
+        }
+      }
+
+      .group-title {
+        font-size: 13px;
+      }
+
+      .required-toggle {
+        .required-label {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .group-content {
+      padding: 12px;
+    }
+
+    .drop-zone {
+      min-height: 60px;
+
+      &__content p {
+        font-size: 12px;
+      }
+    }
+  }
+}
