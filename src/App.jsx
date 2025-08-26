@@ -11,7 +11,7 @@ const theme = {
     colorPrimary: '#035F5B',
     borderRadius: 6,
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  },
+  }, 
 };
 
 function App() {
