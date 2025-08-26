@@ -142,4 +142,4 @@ This project is created for Paxform react-assessment purposes.
 
 ---
 
-**Built for Paxform Senior Frontend Developer Assessment**
+**Built for Senior Frontend Developer Assessment For An Organization**
