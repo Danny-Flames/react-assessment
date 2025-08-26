@@ -1,4 +1,4 @@
-# Paxform Dynamic Form Builder
+# Dynamic Form Builder
 
 A professional, pixel-perfect Dynamic Form Builder built with React 18+ that allows users to create custom forms through an intuitive drag-and-drop interface.
 
